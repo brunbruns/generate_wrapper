@@ -3,8 +3,8 @@ from generate_wrapper import *
 
 print("\n\n*********************** Wrapper Generator ***********************\n***************************************************************** \n")
 
-top_path = "/home/t0264060/stage_cocotb_2022/library_perso/generate_wrapper/mul.vhd" #enter here the vhdl top on which wrapper will be generated 
-wrapper_path= "/home/t0264060/stage_cocotb_2022/library_perso/generate_wrapper/wrapped_mul.vhd" #enter here the path, with name where the wrapper should be generated
+top_path = "/home/t0264060/stage_cocotb_2022/library_perso/generate_wrapper/hdl_basic_demo/mul.vhd" #enter here the vhdl top on which wrapper will be generated 
+wrapper_path= "/home/t0264060/stage_cocotb_2022/library_perso/generate_wrapper/hdl_basic_demo/wrapped_mul.vhd" #enter here the path, with name where the wrapper should be generated
 clk_name="clk" #the name of the clk port is declared here 
 
 edit_shell=0

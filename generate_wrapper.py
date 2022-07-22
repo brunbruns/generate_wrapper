@@ -45,8 +45,16 @@ def wrap(wrapper_path, top_path , clk_name):
         elif identify_component: #if component is identified, look for port 
             
             if (line.find("end") != -1 and line.find(entity_name) != -1) == 1:  #look for "end" and entity name on the same line (separated in case of multiple space or tab)
-                identify_end = True  
-                print ("end of entity")
+                identify_end = True #stop the reading loop  
+
+                type[-1]=type[-1][:-1]#supress last char which was a ')' closing entity declaration  
+                print(f"\n{len(port)}  ports:  ")
+                print(port)
+                print("direction:") 
+                print(direction)   
+                print("type:") 
+                print(type)  
+                print ("\nend of entity")
             
             elif line.find(":") != -1: #according to "standard" writing name of port should be before those :
                 
@@ -72,14 +80,12 @@ def wrap(wrapper_path, top_path , clk_name):
                 line=line.replace("out","")
                 line=line.strip()# dont use replace remove space cause downto need spaces, here only remove at start and end
                 type.append(line)
-    type[-1]=type[-1][:-1]#supress last char which was a ) 
+    
     #end of reading process
-    print(f"{len(port)}  ports  ")
+    
     file_r.close()
 
-    print(port) 
-    print(direction)   
-    print(type)   
+     
     ### here declaration of usefull string, could be stored in a json but still storing in the very own python code isn't a bad practice here
     str_import="library IEEE;\nuse IEEE.STD_LOGIC_1164.ALL;\n\n" 
     str_clk="\n\ncomponent clock is\n\tPort ( clk : out STD_LOGIC);\nend component;\n"
